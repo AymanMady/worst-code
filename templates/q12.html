@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVAI CODE - Emails prioritaires</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">MOVAI CODE - Compteur d'emails prioritaires</h1>
+        <form method="POST" class="mt-4">
+            <div class="mb-3">
+                <label for="prioritaires" class="form-label">Adresses prioritaires (une par ligne) :</label>
+                <textarea name="prioritaires" id="prioritaires" class="form-control" rows="5">dwight@dunder-mifflin.com
+michael@dunder-mifflin.com
+phyllis@dunder-mifflin.com
+</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="expediteurs" class="form-label">Expéditeurs (une par ligne) :</label>
+                <textarea name="expediteurs" id="expediteurs" class="form-control" rows="5">dwight@dunder-mifflin.com
+jul@totemproduction.fr
+phyllis@dunder-mifflin.com
+michael@dunder-mifflin.com
+matthieu@coddity.com</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Compter les prioritaires</button>
+        </form>
+
+        {% if resultat is not none %}
+            <div class="alert alert-success mt-4">
+                <strong>Résultat :</strong> Il y a {{ resultat }} emails prioritaires.
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

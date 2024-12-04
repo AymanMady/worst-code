@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Matroustache</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Test de la fonction Taille de Moustache</h2>
+        <form method="POST" class="mb-4">
+            <h4>Entrée de la Matrice (Moustache réelle) :</h4>
+            {% for i in range(6) %}
+                <div class="mb-3">
+                    <label for="row{{ i }}" class="form-label">Ligne {{ i + 1 }} :</label>
+                    <div class="d-flex">
+                        {% for j in range(10) %}
+                            <input type="number" name="poil_{{ i }}_{{ j }}" class="form-control mx-1" value="{{ input_matrix[i][j] if input_matrix else '' }}" min="1" max="15" required>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+
+        {% if matroustache %}
+            <h4>Matroustache Taillée :</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Colonne 1</th>
+                        <th>Colonne 2</th>
+                        <th>Colonne 3</th>
+                        <th>Colonne 4</th>
+                        <th>Colonne 5</th>
+                        <th>Colonne 6</th>
+                        <th>Colonne 7</th>
+                        <th>Colonne 8</th>
+                        <th>Colonne 9</th>
+                        <th>Colonne 10</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in matroustache %}
+                        <tr>
+                            {% for col in row %}
+                                <td>{{ col }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
